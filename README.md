@@ -16,7 +16,20 @@ Boggle has the following rules:
    of the entries is valid.)
 5. All words must be found in a previously nominated dictionary.
 6. All words must be found within 3 minutes, with time measured by a timer.
+
 (thank you wikipedia, for being a wonderful resource for these rules.)
+
+## Example
+![](./image2019-4-9_17-2-3.png)
+
+In the above example we can see these rules in action. For instance the words
+`of` _(14, 10)_, `at` _(12, 13)_, `an` _(13, 8)_, etc are not valid for the game
+because they don't have at least three letters. The word `tone` _(12, 14, 11, 15)_ is not
+valid because positions 12 and 14 are not adjacent. The word `none` _(11, 14,
+11, 15)_ is not valid because it uses the 11th position twice. There are several
+valid words like `all`, `tall`, `fall`, `lag`, `gallon`, `one`, etc. `lag` is
+interesting in that it can be made 6 different ways, but it is only valid
+once _(6, 5, 4; 6, 1, 4; 6, 1, 2; 6, 5, 2; 9, 5, 2; 9, 5, 4)_.
 
 ## Challenge Overview
 In order to pass this challenge, you must develop software that will take a
