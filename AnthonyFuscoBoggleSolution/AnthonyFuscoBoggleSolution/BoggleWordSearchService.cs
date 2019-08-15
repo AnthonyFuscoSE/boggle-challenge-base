@@ -81,18 +81,21 @@ namespace AnthonyFuscoBoggleSolution
 
         internal char[,] CreateBoggleBoard(string boggleBoard, int numberOfColumns, int numberofRows)
         {
+            
             if (!IsValidBoggleBoard(boggleBoard, numberOfColumns, numberofRows))
             {
                 throw new ArgumentException($"{boggleBoard} does not make a valid boggle board {nameof(boggleBoard)}");
             }
 
+            var boggleBoardUpper = boggleBoard.ToUpper();
+
             var board = new char[numberofRows, numberOfColumns];
             int currentCol = 0;
             int currentRow = 0;
 
-            for (int i = 0; i < boggleBoard.Length; i++)
+            for (int i = 0; i < boggleBoardUpper.Length; i++)
             {
-                board[currentRow, currentCol] = boggleBoard[i];
+                board[currentRow, currentCol] = boggleBoardUpper[i];
                 currentCol++;
                 if (currentCol > numberOfColumns - 1)
                 {

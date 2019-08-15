@@ -12,7 +12,14 @@ namespace AnthonyFuscoBoggleSolution
         static void Main(string[] args)
         {
             BoggleWordSearchService service = new BoggleWordSearchService(new TrieBuilder(new DictionaryRepository()));
-            var words = service.FindWordsInBoggle("EEEOBASOOTALSANI", 4, 4);
+            Console.WriteLine("Please Enter Puzzle as String going from left to right, next line: ");
+            string puzzle = Console.ReadLine();
+            Console.WriteLine("Please enter the number of Rows:");
+            int numOfRows = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter the number of Columns:");
+            int numOfCol = Convert.ToInt32(Console.ReadLine());
+
+            var words = service.FindWordsInBoggle(puzzle.ToUpper(), numOfCol, numOfRows);
 
             foreach (string word in words)
             {
