@@ -4,12 +4,12 @@ using System.IO;
 
 namespace AnthonyFuscoBoggleSolution.Data
 {
-    internal interface IDictionaryRepository
+    public interface IDictionaryRepository
     {
         List<string> GetWords();
     }
 
-    internal class DictionaryRepository : IDictionaryRepository
+    public class DictionaryRepository : IDictionaryRepository
     {
         public List<string> GetWords()
         {

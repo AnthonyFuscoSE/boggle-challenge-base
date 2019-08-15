@@ -11,10 +11,10 @@ namespace BoggleSolutionTests
         public void GetsWordsFromFileGreaterThanThree()
         {
             //Arrange
-            DictionaryRepository test = new DictionaryRepository();
+            DictionaryRepository dictionaryRepository = new DictionaryRepository();
             
             //Act
-            var words = test.GetWords();
+            var words = dictionaryRepository.GetWords();
 
             //Assert
             Assert.IsFalse(words.Contains("AA"));
