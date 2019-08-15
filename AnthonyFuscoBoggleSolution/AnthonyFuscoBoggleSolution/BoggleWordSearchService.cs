@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AnthonyFuscoBoggleSolution.Data;
+using AnthonyFuscoBoggleSolution.Models;
 
 namespace AnthonyFuscoBoggleSolution
 {
@@ -14,28 +15,89 @@ namespace AnthonyFuscoBoggleSolution
     }
     public class BoggleWordSearchService : IBoggleWordSearchService
     {
-        //private readonly IDictionaryRepository _dictionaryRepository;
+        private readonly ITrieBuilder _trieBuilder;
+        private HashSet<string> _foundWords = new HashSet<string>();
 
-        //public BoggleWordSearchService(IDictionaryRepository dictionaryRepository)
-        //{
-        //    _dictionaryRepository = dictionaryRepository ?? throw new ArgumentNullException(nameof(dictionaryRepository));
-        //}
+        public BoggleWordSearchService(ITrieBuilder trieBuilder)
+        {
+            _trieBuilder = trieBuilder ?? throw new ArgumentNullException(nameof(trieBuilder));
+        }
 
         public HashSet<string> FindWordsInBoggle(string boggleBoard, int numberOfColumns, int numberofRows)
         {
-            HashSet<string> foundWords = new HashSet<string>();
+            //Build Main Trie
+            var mainTrie = _trieBuilder.BuildTrie();
 
+            //build array of boggle board based on string / params
+            char[,] boardArray = CreateBoggleBoard(boggleBoard, numberOfColumns, numberofRows);
+
+            //create depth first search
+            for (int row = 0; row < boardArray.GetLength(0); row++)
+            {
+
+                for (int col = 0; col < boardArray.GetLength(1); col++)
+                {
+                    FindWords(row, col, "", new List<string>(), mainTrie, boardArray);
+                }
+            }
+
+
+            return _foundWords;
+        }
+
+        private void FindWords(int row, int col, string builtWord, List<string> visitedLocations, List<Trie> currentNode, char[,] boardArray)
+        {
+            if (currentNode == null)
+            {
+                return;
+            }
+            if(visitedLocations.Contains($"{row},{col}"))
+            {
+                return;
+            }
+            visitedLocations.Add($"{row},{col}");
+
+            char letter = boardArray[row, col];
+            builtWord += letter;
+
+            var foundNode = currentNode.FirstOrDefault(x => x.Value == letter);
+
+            if (foundNode != null && foundNode.ValidWord)
+            {
+                _foundWords.Add(builtWord);
+            }
+
+            List<Tuple<int, int>> nextLocation = GetAvailableCoordinates(row, col, boardArray.GetLength(0), boardArray.GetLength(1));
+
+            foreach (Tuple<int, int> coordinate in nextLocation)
+            {
+               FindWords(coordinate.Item1, coordinate.Item2, builtWord, visitedLocations, currentNode.FirstOrDefault(x => x.Value == letter)?.Children, boardArray); 
+            }
+        }
+
+        internal char[,] CreateBoggleBoard(string boggleBoard, int numberOfColumns, int numberofRows)
+        {
             if (!IsValidBoggleBoard(boggleBoard, numberOfColumns, numberofRows))
             {
                 throw new ArgumentException($"{boggleBoard} does not make a valid boggle board {nameof(boggleBoard)}");
             }
 
-            //Build Main Trie
-            //build array of boggle board based on string / params
-            //create depth first search
-            
+            var board = new char[numberofRows, numberOfColumns];
+            int currentCol = 0;
+            int currentRow = 0;
 
-            return foundWords;
+            for (int i = 0; i < boggleBoard.Length; i++)
+            {
+                board[currentRow, currentCol] = boggleBoard[i];
+                currentCol++;
+                if (currentCol > numberOfColumns - 1)
+                {
+                    currentRow++;
+                    currentCol = 0;
+                }
+            }
+
+            return board;
         }
 
         internal bool IsValidBoggleBoard(string board, int numberOfColumns, int numberOfRows)
@@ -57,6 +119,38 @@ namespace AnthonyFuscoBoggleSolution
             }
 
             return true;
+        }
+
+        internal List<Tuple<int, int>> GetAvailableCoordinates(int curRow, int curCol, int maxRow, int maxCol)
+        {
+            var nextToTry = new List<Tuple<int, int>>();
+            foreach (Tuple<int, int> direction in PossibleDirections())
+            {
+                var newRow = curRow + direction.Item1;
+                var newCol = curCol + direction.Item2;
+                if (newRow >= maxRow || newCol >= maxCol || newRow < 0 || newCol < 0)
+                {
+                    continue;
+                }
+                nextToTry.Add(new Tuple<int, int>(newRow, newCol));
+            }
+
+            return nextToTry;
+        }
+
+        internal List<Tuple<int,int>> PossibleDirections()
+        {
+            var possibleLocations = new List<Tuple<int,int>>();
+            possibleLocations.Add(new Tuple<int, int>(-1,-1)); //upperLeft
+            possibleLocations.Add(new Tuple<int, int>(-1, 0)); //Up
+            possibleLocations.Add(new Tuple<int, int>(-1, 1)); //UpperRight
+            possibleLocations.Add(new Tuple<int, int>(0, -1)); //left
+            possibleLocations.Add(new Tuple<int, int>(0, 1)); //right
+            possibleLocations.Add(new Tuple<int, int>(1, -1)); //bottomLeft
+            possibleLocations.Add(new Tuple<int, int>(1, 0)); //down
+            possibleLocations.Add(new Tuple<int, int>(1, 1)); //bottomRight
+
+            return possibleLocations;
         }
     }
 }

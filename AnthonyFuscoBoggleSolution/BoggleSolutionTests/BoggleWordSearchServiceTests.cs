@@ -14,16 +14,22 @@ namespace BoggleSolutionTests
         public void Puzzle0Test()
         {
             //Arrange
-            //Mock<IDictionaryRepository> dictionaryRepo = new Mock<IDictionaryRepository>();
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
 
-            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService();
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
             var board = "EEEOBASOOTALSANI";
             var expectedResults = Solution0Results();
+            
             //Act
             HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
 
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
             //Assert
-            Assert.AreEqual(expectedResults, result); 
+            Assert.AreEqual(expectedString, resultString);
         }
 
         [TestMethod]
@@ -37,13 +43,62 @@ namespace BoggleSolutionTests
         public void ValidatesBoard(string board, int numCol, int numRow, bool expected)
         {
             //Arrange
-            //Mock<IDictionaryRepository> dictionaryRepo = new Mock<IDictionaryRepository>();
+            Mock<ITrieBuilder> trieBuilderMock = new Mock<ITrieBuilder>();
 
-            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService();
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilderMock.Object);
+            
             //Act
             bool result = boggleWordSearchService.IsValidBoggleBoard(board, numCol, numRow);
+            
             //Assert
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void BoardArrayBuiltCorrectly()
+        {
+            //Arrange
+            Mock<ITrieBuilder> trieBuilderMock = new Mock<ITrieBuilder>();
+            string board = "EEEOBASOOTALSANI";
+            int numCol = 4;
+            int numRow = 4;
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilderMock.Object);
+            char[,] expectedArray = new char[4,4];
+            
+            //Row 1 EEEO
+            expectedArray[0, 0] = 'E';
+            expectedArray[0, 1] = 'E';
+            expectedArray[0, 2] = 'E';
+            expectedArray[0, 3] = 'O';
+            
+            //Row 2 BASO
+            expectedArray[1, 0] = 'B';
+            expectedArray[1, 1] = 'A';
+            expectedArray[1, 2] = 'S';
+            expectedArray[1, 3] = 'O';
+
+            //Row 3 OTAL
+            expectedArray[2, 0] = 'O';
+            expectedArray[2, 1] = 'T';
+            expectedArray[2, 2] = 'A';
+            expectedArray[2, 3] = 'L';
+            
+            //Row 4 SANI
+            expectedArray[3, 0] = 'S';
+            expectedArray[3, 1] = 'A';
+            expectedArray[3, 2] = 'N';
+            expectedArray[3, 3] = 'I';
+
+            //Act
+            var builtArray = boggleWordSearchService.CreateBoggleBoard(board, numCol, numRow);
+            
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(builtArray);
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedArray);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
         }
 
         private static HashSet<string> Solution0Results()
