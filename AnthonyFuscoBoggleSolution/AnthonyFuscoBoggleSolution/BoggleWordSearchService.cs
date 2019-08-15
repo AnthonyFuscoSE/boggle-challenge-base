@@ -47,10 +47,6 @@ namespace AnthonyFuscoBoggleSolution
 
         private void FindWords(int row, int col, string builtWord, List<string> visitedLocations, List<Trie> currentNode, char[,] boardArray)
         {
-            if (currentNode == null)
-            {
-                return;
-            }
             if(visitedLocations.Contains($"{row},{col}"))
             {
                 return;
@@ -61,8 +57,14 @@ namespace AnthonyFuscoBoggleSolution
             builtWord += letter;
 
             var foundNode = currentNode.FirstOrDefault(x => x.Value == letter);
+            
+            if (foundNode == null)
+            {
+                visitedLocations.Remove($"{row},{col}");
+                return;
+            }
 
-            if (foundNode != null && foundNode.ValidWord)
+            if (foundNode.ValidWord)
             {
                 _foundWords.Add(builtWord);
             }
@@ -71,8 +73,10 @@ namespace AnthonyFuscoBoggleSolution
 
             foreach (Tuple<int, int> coordinate in nextLocation)
             {
-               FindWords(coordinate.Item1, coordinate.Item2, builtWord, visitedLocations, currentNode.FirstOrDefault(x => x.Value == letter)?.Children, boardArray); 
+               FindWords(coordinate.Item1, coordinate.Item2, builtWord, visitedLocations, foundNode?.Children, boardArray); 
             }
+
+            visitedLocations.Remove($"{row},{col}");
         }
 
         internal char[,] CreateBoggleBoard(string boggleBoard, int numberOfColumns, int numberofRows)

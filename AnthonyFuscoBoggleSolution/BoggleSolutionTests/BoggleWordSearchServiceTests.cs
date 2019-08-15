@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AnthonyFuscoBoggleSolution;
 using AnthonyFuscoBoggleSolution.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,6 +16,7 @@ namespace BoggleSolutionTests
         {
             //Arrange
             IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
             ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
 
             BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
@@ -25,7 +27,30 @@ namespace BoggleSolutionTests
             HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
 
             //only care that tries look the same. 
-            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle1Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "WNNRILCDBGBEELNU";
+            var expectedResults = Solution1Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
             var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
 
             //Assert
@@ -255,6 +280,51 @@ namespace BoggleSolutionTests
                 "TAO",
                 "TAOS",
                 "TAS"
+            };
+        }
+
+        private static HashSet<string> Solution1Results()
+        {
+            return new HashSet<string>
+            {
+                "BED",
+                "BEG",
+                "BEGIN",
+                "BEL",
+                "BEN",
+                "BIG",
+                "BILGE",
+                "BIN",
+                "BLEB",
+                "BLIN",
+                "BUN",
+                "BUNG",
+                "BUNGLE",
+                "DEB",
+                "DEN",
+                "ENG",
+                "GEL",
+                "GIB",
+                "GIBE",
+                "GIN",
+                "GLIB",
+                "GNU",
+                "INN",
+                "LEG",
+                "LIB",
+                "LIBEL",
+                "LIN",
+                "LINN",
+                "NEB",
+                "NIB",
+                "NIL",
+                "NUB",
+                "UNBE",
+                "WIG",
+                "WIN",
+                "WINCE",
+                "WINCED"
+
             };
         }
     }
