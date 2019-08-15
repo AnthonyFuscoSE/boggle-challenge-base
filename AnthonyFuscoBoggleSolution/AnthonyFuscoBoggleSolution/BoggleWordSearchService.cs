@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using AnthonyFuscoBoggleSolution.Data;
 using AnthonyFuscoBoggleSolution.Models;
 
 namespace AnthonyFuscoBoggleSolution
@@ -13,6 +10,7 @@ namespace AnthonyFuscoBoggleSolution
     {
         HashSet<string> FindWordsInBoggle(string boggleBoard, int numberOfColumns, int numberofRows);
     }
+
     public class BoggleWordSearchService : IBoggleWordSearchService
     {
         private readonly ITrieBuilder _trieBuilder;
@@ -41,7 +39,6 @@ namespace AnthonyFuscoBoggleSolution
                 }
             }
 
-
             return _foundWords;
         }
 
@@ -51,9 +48,11 @@ namespace AnthonyFuscoBoggleSolution
             {
                 return;
             }
+
             visitedLocations.Add($"{row},{col}");
 
             char letter = boardArray[row, col];
+
             builtWord += letter;
 
             var foundNode = currentNode.FirstOrDefault(x => x.Value == letter);
@@ -90,6 +89,7 @@ namespace AnthonyFuscoBoggleSolution
             var boggleBoardUpper = boggleBoard.ToUpper();
 
             var board = new char[numberofRows, numberOfColumns];
+
             int currentCol = 0;
             int currentRow = 0;
 
@@ -131,10 +131,12 @@ namespace AnthonyFuscoBoggleSolution
         internal List<Tuple<int, int>> GetAvailableCoordinates(int curRow, int curCol, int maxRow, int maxCol)
         {
             var nextToTry = new List<Tuple<int, int>>();
+
             foreach (Tuple<int, int> direction in PossibleDirections())
             {
                 var newRow = curRow + direction.Item1;
                 var newCol = curCol + direction.Item2;
+
                 if (newRow >= maxRow || newCol >= maxCol || newRow < 0 || newCol < 0)
                 {
                     continue;
