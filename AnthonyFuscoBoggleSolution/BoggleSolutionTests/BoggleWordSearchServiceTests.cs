@@ -58,6 +58,190 @@ namespace BoggleSolutionTests
         }
 
         [TestMethod]
+        public void Puzzle2Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "CEOIBAMTEHGSYPOE";
+            var expectedResults = Solution2Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle3Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "FVKOWQIMEZTLRPBE";
+            var expectedResults = Solution3Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle4Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "VCOEQEIAUHPTGDAD";
+            var expectedResults = Solution4Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle5Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "RRIEZUYTVEIQOSOO";
+            var expectedResults = Solution5Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle6Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "TMEZTTALLMQSAWFY";
+            var expectedResults = Solution6Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle7Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "NGEREUADEFNJALLZ";
+            var expectedResults = Solution7Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle8Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "NLOLEAPSXIMDAHRG";
+            var expectedResults = Solution8Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
+        public void Puzzle9Test()
+        {
+            //Arrange
+            IDictionaryRepository dictionaryRepository = new DictionaryRepository();
+
+            ITrieBuilder trieBuilder = new TrieBuilder(dictionaryRepository);
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(trieBuilder);
+            var board = "DKELBFSLOWGCOBKH";
+            var expectedResults = Solution9Results();
+
+            //Act
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
+
+            //only care that tries look the same. 
+            var resultString = Newtonsoft.Json.JsonConvert.SerializeObject(result.OrderBy(keys => keys));
+            var expectedString = Newtonsoft.Json.JsonConvert.SerializeObject(expectedResults);
+
+            //Assert
+            Assert.AreEqual(expectedString, resultString);
+        }
+
+        [TestMethod]
         [DataRow("EEEOBASOOTALSANI", 4, 4, true)]
         [DataRow("EEEOBASOOTALSANII", 4, 4, false)]
         [DataRow("EEEOB@SOOTALSANII", 4, 4, false)]
@@ -325,6 +509,655 @@ namespace BoggleSolutionTests
                 "WINCE",
                 "WINCED"
 
+            };
+        }
+
+        private static HashSet<string> Solution2Results()
+        {
+            return new HashSet<string>
+            {
+                "ACE",
+                "AGE",
+                "AGES",
+                "AGO",
+                "AMI",
+                "BAG",
+                "BAGS",
+                "BAH",
+                "BAM",
+                "BAMS",
+                "BEAM",
+                "BEAMS",
+                "BEMA",
+                "BEY",
+                "CAB",
+                "CAGE",
+                "CAGES",
+                "CAM",
+                "CAME",
+                "CAMEO",
+                "CAMS",
+                "EGO",
+                "EGOS",
+                "EMIT",
+                "EMITS",
+                "EMS",
+                "EPHA",
+                "EPOS",
+                "GAB",
+                "GAE",
+                "GAM",
+                "GAME",
+                "GAMS",
+                "GEST",
+                "GHOST",
+                "GOES",
+                "HAE",
+                "HAEM",
+                "HAEMS",
+                "HAG",
+                "HAGS",
+                "HAM",
+                "HAME",
+                "HAMS",
+                "HAO",
+                "HEBE",
+                "HEP",
+                "HEY",
+                "HOE",
+                "HOES",
+                "HOG",
+                "HOGS",
+                "HOP",
+                "HOPE",
+                "HOSE",
+                "HOST",
+                "HYP",
+                "HYPE",
+                "HYPO",
+                "HYPOS",
+                "HYPOSTOME",
+                "IMAGE",
+                "IMAGES",
+                "IMAGO",
+                "IMAGOES",
+                "IMAGOS",
+                "ITS",
+                "MABE",
+                "MAC",
+                "MACE",
+                "MAE",
+                "MAG",
+                "MAGE",
+                "MAGES",
+                "MAGS",
+                "MAHOE",
+                "MAHOES",
+                "MHO",
+                "MHOS",
+                "MOA",
+                "MOT",
+                "MOTS",
+                "OES",
+                "OGAM",
+                "OGAMS",
+                "OGHAM",
+                "OGHAMS",
+                "OHM",
+                "OHMAGE",
+                "OHMAGES",
+                "OHMS",
+                "OMIT",
+                "OMITS",
+                "OMS",
+                "OPE",
+                "OSE",
+                "PEA",
+                "PEACE",
+                "PEAG",
+                "PEAGE",
+                "PEAGES",
+                "PEAGS",
+                "PEH",
+                "PHAGE",
+                "PHAGES",
+                "POH",
+                "POSE",
+                "POST",
+                "POSTGAME",
+                "PYE",
+                "SEG",
+                "SEGO",
+                "SMIT",
+                "SOP",
+                "SOPH",
+                "SOPHY",
+                "STIME",
+                "STOA",
+                "STOAE",
+                "STOMA",
+                "TIME",
+                "TOE",
+                "TOEA",
+                "TOM",
+                "TOME",
+                "TOMS",
+                "YEA",
+                "YEAH",
+                "YEH",
+                "YEP"
+            };
+        }
+
+        private static HashSet<string> Solution3Results()
+        {
+            return new HashSet<string>
+            {
+                "BEL",
+                "BELT",
+                "BET",
+                "BLET",
+                "BLITE",
+                "BLITZ",
+                "ELM",
+                "KILT",
+                "KIT",
+                "KITE",
+                "KOI",
+                "LET",
+                "LIMO",
+                "LIT",
+                "LITE",
+                "MIL",
+                "MILE",
+                "MILT",
+                "MITE",
+                "MOIL",
+                "OIL",
+                "OMIT",
+                "PER",
+                "PEW",
+                "PREZ",
+                "REP",
+                "REPTILE",
+                "TEL",
+                "TIL",
+                "TILE",
+                "VILE",
+                "VIM",
+                "WEPT",
+                "ZIT"
+            };
+        }
+
+        private static HashSet<string> Solution4Results()
+        {
+            return new HashSet<string>
+            {
+                "AIT",
+                "APE",
+                "APT",
+                "ATAP",
+                "CEP",
+                "CIAO",
+                "COAPT",
+                "COAT",
+                "COATI",
+                "DAD",
+                "DAH",
+                "DAP",
+                "DATA",
+                "DUE",
+                "DUG",
+                "EAT",
+                "EPHA",
+                "EPIC",
+                "GHAT",
+                "GHI",
+                "HAD",
+                "HAP",
+                "HAPTIC",
+                "HAT",
+                "HEP",
+                "HEPATIC",
+                "HEPTAD",
+                "HIC",
+                "HIE",
+                "HIP",
+                "HIT",
+                "HUE",
+                "HUG",
+                "ICE",
+                "OAT",
+                "PAD",
+                "PAH",
+                "PAT",
+                "PATIO",
+                "PEC",
+                "PEH",
+                "PHAT",
+                "PHATIC",
+                "PHI",
+                "PIA",
+                "PIC",
+                "PICE",
+                "PIE",
+                "PIT",
+                "PITA",
+                "TAD",
+                "TAE",
+                "TAO",
+                "TAP",
+                "TAPA",
+                "TAPE",
+                "TIC",
+                "TIE",
+                "TIP",
+                "UGH"
+            };
+        }
+
+        private static HashSet<string> Solution5Results()
+        {
+            return new HashSet<string>
+            {
+                "EYE",
+                "EYES",
+                "EYRIE",
+                "OES",
+                "OSE",
+                "RITE",
+                "RUE",
+                "RUES",
+                "RYE",
+                "RYES",
+                "SEI",
+                "SIEUR",
+                "SIT",
+                "SITE",
+                "TIE",
+                "TIES",
+                "TIS",
+                "TYE",
+                "TYES",
+                "VOE",
+                "VOES",
+                "YES",
+                "YET",
+                "YETI",
+                "YETIS",
+                "YIRR"
+            };
+        }
+
+        private static HashSet<string> Solution6Results()
+        {
+            return new HashSet<string>
+            {
+                "ALE",
+                "ALMA",
+                "ALMAS",
+                "ALS",
+                "ALT",
+                "AMA",
+                "AMAS",
+                "AMAZE",
+                "ATE",
+                "ATMA",
+                "ATT",
+                "AWL",
+                "EASY",
+                "EAT",
+                "ELS",
+                "ETA",
+                "ETAS",
+                "LAM",
+                "LAMA",
+                "LAMAS",
+                "LAME",
+                "LAS",
+                "LAT",
+                "LATE",
+                "LAW",
+                "LAZE",
+                "LEA",
+                "LEAS",
+                "LET",
+                "LEZ",
+                "MAE",
+                "MALE",
+                "MALT",
+                "MAMA",
+                "MAS",
+                "MAT",
+                "MATE",
+                "MATT",
+                "MAW",
+                "MAZE",
+                "MEAL",
+                "MEALS",
+                "MEAT",
+                "MEL",
+                "MELS",
+                "MET",
+                "META",
+                "METAL",
+                "METALS",
+                "QAT",
+                "SAE",
+                "SAL",
+                "SALE",
+                "SAME",
+                "SAT",
+                "SATE",
+                "SATEM",
+                "SLAM",
+                "SLAT",
+                "SLATE",
+                "TAE",
+                "TAEL",
+                "TAELS",
+                "TALE",
+                "TAM",
+                "TAMAL",
+                "TAME",
+                "TAS",
+                "TEA",
+                "TEAL",
+                "TEALS",
+                "TEAM",
+                "TEAS",
+                "TEL",
+                "TELA",
+                "TELS",
+                "ZEAL",
+                "ZEALS",
+                "ZETA",
+                "ZETAS"
+            };
+        }
+
+        private static HashSet<string> Solution7Results()
+        {
+            return new HashSet<string>
+            {
+                "AFAR",
+                "AGE",
+                "AGED",
+                "AGEE",
+                "AGER",
+                "AGUE",
+                "ALE",
+                "ALEE",
+                "ALEF",
+                "ALFA",
+                "ALL",
+                "AND",
+                "ARE",
+                "AUGER",
+                "DAG",
+                "DARE",
+                "DEAF",
+                "DEAFEN",
+                "DEAN",
+                "DEAR",
+                "DRAG",
+                "DRAGEE",
+                "DREG",
+                "EAR",
+                "EAU",
+                "EEL",
+                "EGAD",
+                "EGER",
+                "ELF",
+                "ELL",
+                "ENG",
+                "ERA",
+                "FAD",
+                "FADE",
+                "FADER",
+                "FAG",
+                "FALL",
+                "FAN",
+                "FAR",
+                "FARD",
+                "FARE",
+                "FARED",
+                "FAUN",
+                "FEAL",
+                "FEE",
+                "FEEL",
+                "FELL",
+                "FEN",
+                "FEU",
+                "FEUAR",
+                "FEUED",
+                "FLEA",
+                "FLEE",
+                "FUEL",
+                "FUG",
+                "FUN",
+                "FUND",
+                "GAD",
+                "GAE",
+                "GAED",
+                "GAN",
+                "GANDER",
+                "GAR",
+                "GAUN",
+                "GEAR",
+                "GED",
+                "GEE",
+                "GEN",
+                "GENU",
+                "GENUA",
+                "GNU",
+                "GUAN",
+                "GUAR",
+                "GUARD",
+                "GUN",
+                "JADE",
+                "JAG",
+                "JAGER",
+                "JAR",
+                "LEA",
+                "LEAF",
+                "LEAFAGE",
+                "LEE",
+                "LEU",
+                "NAE",
+                "NAG",
+                "NARD",
+                "NEE",
+                "NUN",
+                "RAD",
+                "RAG",
+                "RAGE",
+                "RAGED",
+                "RAGEE",
+                "RAJ",
+                "RAN",
+                "RAND",
+                "READ",
+                "RED",
+                "REDAN",
+                "REG",
+                "UNAGED",
+                "UNDE",
+                "UNDER",
+                "UNDERAGE"
+            };
+        }
+
+        private static HashSet<string> Solution8Results()
+        {
+            return new HashSet<string>
+            {
+                "AIM",
+                "AIMS",
+                "AIR",
+                "AIRMAN",
+                "ALE",
+                "ALEXIA",
+                "ALP",
+                "ALPS",
+                "AMI",
+                "AMIA",
+                "AMIE",
+                "AMIR",
+                "AMP",
+                "AMPLE",
+                "AMPS",
+                "ANE",
+                "AXAL",
+                "AXE",
+                "AXEL",
+                "AXIAL",
+                "DRIP",
+                "DRIPS",
+                "ELAN",
+                "EXAM",
+                "EXAMS",
+                "GRIM",
+                "GRIP",
+                "GRIPMAN",
+                "GRIPS",
+                "HAIR",
+                "HIE",
+                "HIM",
+                "HIP",
+                "HIPS",
+                "IMP",
+                "IMPALE",
+                "IMPANEL",
+                "IMPS",
+                "LAIR",
+                "LAIRD",
+                "LAIRDS",
+                "LAM",
+                "LAMIA",
+                "LAMP",
+                "LAMPS",
+                "LAMS",
+                "LANE",
+                "LAP",
+                "LAPS",
+                "LAX",
+                "LEA",
+                "LEAN",
+                "LEAP",
+                "LEAPS",
+                "LEI",
+                "LEX",
+                "LOAM",
+                "LOAMS",
+                "LOAN",
+                "LOP",
+                "LOPS",
+                "MAE",
+                "MAIR",
+                "MALE",
+                "MAN",
+                "MANE",
+                "MAP",
+                "MAPLE",
+                "MAPS",
+                "MAX",
+                "MAXI",
+                "MIEN",
+                "MIR",
+                "MIX",
+                "NAE",
+                "NAM",
+                "NAOS",
+                "NAP",
+                "NAPS",
+                "NEAP",
+                "NEAPS",
+                "OLE",
+                "OLEA",
+                "OPAL",
+                "OPS",
+                "PAIR",
+                "PAL",
+                "PALE",
+                "PAM",
+                "PAMS",
+                "PAN",
+                "PANE",
+                "PANEL",
+                "PAX",
+                "PIA",
+                "PIAL",
+                "PIAN",
+                "PIE",
+                "PIMA",
+                "PIX",
+                "PIXEL",
+                "PLAN",
+                "PLANE",
+                "PLEA",
+                "PLENA",
+                "POL",
+                "POLE",
+                "POLEAX",
+                "POLS",
+                "PSOAE",
+                "PSOAI",
+                "RIA",
+                "RIAL",
+                "RIEL",
+                "RIM",
+                "RIMPLE",
+                "RIMS",
+                "RIP",
+                "RIPS",
+                "SLOP",
+                "SOAP",
+                "SOL",
+                "SOLA",
+                "SOLAN",
+                "SOLE",
+                "SOLEI",
+                "SOP",
+                "SPA",
+                "SPAE",
+                "SPALE",
+                "SPAN",
+                "SPIEL"
+            };
+        }
+
+        private static HashSet<string> Solution9Results()
+        {
+            return new HashSet<string>
+            {
+                "BOB",
+                "BOO",
+                "BOOB",
+                "BOW",
+                "BOWS",
+                "BOWSE",
+                "CLEF",
+                "CLEFS",
+                "EFS",
+                "ELL",
+                "ELLS",
+                "ELS",
+                "FELL",
+                "FELLS",
+                "FOB",
+                "KEF",
+                "KEFS",
+                "LEK",
+                "LEKS",
+                "OWSE",
+                "SEL",
+                "SELL",
+                "SWOB",
+                "WOO",
+                "WOOF",
+                "WOOFS"
             };
         }
     }
