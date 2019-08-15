@@ -22,7 +22,7 @@ namespace AnthonyFuscoBoggleSolution.Data
                 {
                     if (s.Length >= 3)
                     {
-                        words.Add(s);
+                        words.Add(s.ToUpper());
                     }
                     
                 }

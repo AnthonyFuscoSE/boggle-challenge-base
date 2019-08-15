@@ -14,16 +14,36 @@ namespace BoggleSolutionTests
         public void Puzzle0Test()
         {
             //Arrange
-            Mock<IDictionaryRepository> dictionaryRepo = new Mock<IDictionaryRepository>();
+            //Mock<IDictionaryRepository> dictionaryRepo = new Mock<IDictionaryRepository>();
 
-            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService(dictionaryRepo.Object);
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService();
             var board = "EEEOBASOOTALSANI";
             var expectedResults = Solution0Results();
             //Act
-            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board);
+            HashSet<string> result = boggleWordSearchService.FindWordsInBoggle(board, 4, 4);
 
             //Assert
             Assert.AreEqual(expectedResults, result); 
+        }
+
+        [TestMethod]
+        [DataRow("EEEOBASOOTALSANI", 4, 4, true)]
+        [DataRow("EEEOBASOOTALSANII", 4, 4, false)]
+        [DataRow("EEEOB@SOOTALSANII", 4, 4, false)]
+        [DataRow("EEEOB@SOOTALSANI", 4, 4, false)]
+        [DataRow("EEEOBaSOOTALSANI", 4, 4, true)]
+        [DataRow("EEEOBASOOTALSANICCCC", 4, 5, true)]
+
+        public void ValidatesBoard(string board, int numCol, int numRow, bool expected)
+        {
+            //Arrange
+            //Mock<IDictionaryRepository> dictionaryRepo = new Mock<IDictionaryRepository>();
+
+            BoggleWordSearchService boggleWordSearchService = new BoggleWordSearchService();
+            //Act
+            bool result = boggleWordSearchService.IsValidBoggleBoard(board, numCol, numRow);
+            //Assert
+            Assert.AreEqual(expected, result);
         }
 
         private static HashSet<string> Solution0Results()
