@@ -272,6 +272,9 @@ namespace BoggleSolutionTests
         [DataRow("EEEOB@SOOTALSANI", 4, 4, false)]
         [DataRow("EEEOBaSOOTALSANI", 4, 4, true)]
         [DataRow("EEEOBASOOTALSANICCCC", 4, 5, true)]
+        [DataRow("EEEOBASOOTALSani", 4, 4, true)]
+        [DataRow("EEEOBASOOTALSani", -1, -4, false)]
+        [DataRow("EEEOBASOOTALSani", -1, 4, false)]
 
         public void ValidatesBoard(string board, int numCol, int numRow, bool expected)
         {

@@ -83,7 +83,7 @@ namespace AnthonyFuscoBoggleSolution
             
             if (!IsValidBoggleBoard(boggleBoard, numberOfColumns, numberofRows))
             {
-                throw new ArgumentException($"{boggleBoard} does not make a valid boggle board {nameof(boggleBoard)}");
+                throw new ArgumentException($"{boggleBoard} does not make a valid boggle board");
             }
 
             var boggleBoardUpper = boggleBoard.ToUpper();
@@ -110,6 +110,11 @@ namespace AnthonyFuscoBoggleSolution
         internal bool IsValidBoggleBoard(string board, int numberOfColumns, int numberOfRows)
         {
             if (string.IsNullOrWhiteSpace(board))
+            {
+                return false;
+            }
+
+            if (numberOfColumns <= 1 || numberOfRows <= 1)
             {
                 return false;
             }

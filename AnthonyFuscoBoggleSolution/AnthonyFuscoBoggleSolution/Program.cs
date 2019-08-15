@@ -13,18 +13,27 @@ namespace AnthonyFuscoBoggleSolution
             string puzzle = Console.ReadLine();
 
             Console.WriteLine("Please enter the number of Rows:");
-            int numOfRows = Convert.ToInt32(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out var numOfRows);
 
             Console.WriteLine("Please enter the number of Columns:");
-            int numOfCol = Convert.ToInt32(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out var numOfCol);
 
-            var words = service.FindWordsInBoggle(puzzle.ToUpper(), numOfCol, numOfRows);
-
-            foreach (string word in words)
+            try
             {
-                Console.WriteLine(word);
+                var words = service.FindWordsInBoggle(puzzle?.ToUpper(), numOfCol, numOfRows);
+                Console.WriteLine($"{Environment.NewLine}Found Words:{Environment.NewLine}");
+                foreach (string word in words)
+                {
+                    Console.WriteLine(word);
+                }
+                Console.WriteLine();
             }
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+         
+            Console.WriteLine("Press any key to quit.");
             Console.ReadLine();
         }
     }
