@@ -24,7 +24,7 @@ namespace AnthonyFuscoBoggleSolution
         public HashSet<string> FindWordsInBoggle(string boggleBoard, int numberOfColumns, int numberofRows)
         {
             //Build Main Trie
-            var mainTrie = _trieBuilder.BuildTrie();
+            List<ITrie> mainTrie = _trieBuilder.BuildTrie();
 
             //build array of boggle board based on string / params
             char[,] boardArray = CreateBoggleBoard(boggleBoard, numberOfColumns, numberofRows);
@@ -42,7 +42,7 @@ namespace AnthonyFuscoBoggleSolution
             return _foundWords;
         }
 
-        private void FindWords(int row, int col, string builtWord, List<string> visitedLocations, List<Trie> currentNode, char[,] boardArray)
+        private void FindWords(int row, int col, string builtWord, List<string> visitedLocations, List<ITrie> currentNode, char[,] boardArray)
         {
             if(visitedLocations.Contains($"{row},{col}"))
             {

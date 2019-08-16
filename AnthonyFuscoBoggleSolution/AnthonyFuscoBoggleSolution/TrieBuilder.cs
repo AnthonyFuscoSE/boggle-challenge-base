@@ -8,20 +8,20 @@ namespace AnthonyFuscoBoggleSolution
 {
     public interface ITrieBuilder
     {
-        List<Trie> BuildTrie();
+        List<ITrie> BuildTrie();
     }
 
     public class TrieBuilder : ITrieBuilder
     {
         private readonly IDictionaryRepository _dictionaryRepository;
-        private List<Trie> _masterList = new List<Trie>();
+        private List<ITrie> _masterList = Factory.CreateTrieList();
 
         public TrieBuilder(IDictionaryRepository dictionaryRepository)
         {
             _dictionaryRepository = dictionaryRepository ?? throw new ArgumentNullException(nameof(dictionaryRepository));
         }
 
-        public List<Trie> BuildTrie()
+        public List<ITrie> BuildTrie()
         {
             List<string> words = _dictionaryRepository.GetWords();
             foreach (string word in words)
@@ -31,7 +31,7 @@ namespace AnthonyFuscoBoggleSolution
             return _masterList;
         }
 
-        private void GenerateTrie(string word, List<Trie> currentNode)
+        private void GenerateTrie(string word, List<ITrie> currentNode)
         {
             if (string.IsNullOrWhiteSpace(word))
             {
@@ -40,7 +40,10 @@ namespace AnthonyFuscoBoggleSolution
 
             if (currentNode.FirstOrDefault(x => x.Value == word[0]) == null)
             {
-                currentNode.Add(new Trie { ValidWord = word.Length == 1, Value = word[0] });
+                ITrie currentTrie = Factory.CreateTrie();
+                currentTrie.ValidWord = word.Length == 1;
+                currentTrie.Value = word[0]; 
+                currentNode.Add(currentTrie);
             }
 
             GenerateTrie(word.Substring(1), currentNode.FirstOrDefault(x => x.Value == word[0]).Children);

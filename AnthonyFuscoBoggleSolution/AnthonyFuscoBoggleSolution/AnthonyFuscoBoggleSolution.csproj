@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BoggleWordSearchService.cs" />
     <Compile Include="Data\DictionaryRepository.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="Models\Trie.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

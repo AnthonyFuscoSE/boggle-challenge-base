@@ -20,42 +20,42 @@ namespace BoggleSolutionTests
             dictionaryRepo.Setup(x => x.GetWords()).Returns(smallWordList);
 
             TrieBuilder trieBuilder = new TrieBuilder(dictionaryRepo.Object);
-            var expectedResults = new List<Trie>();
+            var expectedResults = Factory.CreateTrieList();
             expectedResults.Add(new Trie
             {
                 Value = 'A', 
                 ValidWord = false,
-                Children = new List<Trie>
+                Children = new List<ITrie>
                 {
                     new Trie
                     {
                         Value = 'P',
                         ValidWord = false,
-                        Children = new List<Trie>
+                        Children = new List<ITrie>
                         {
                             new Trie
                             {
                                 Value = 'P',
                                 ValidWord = false,
-                                Children = new List<Trie>
+                                Children = new List<ITrie>
                                 {
                                     new Trie
                                     {
                                         Value = 'L',
                                         ValidWord = false,
-                                        Children = new List<Trie>
+                                        Children = new List<ITrie>
                                         {
                                             new Trie
                                             {
                                                 Value = 'E',
                                                 ValidWord = true,
-                                                Children = new List<Trie>
+                                                Children = new List<ITrie>
                                                 {
                                                     new Trie
                                                     {
                                                         Value = 'S',
                                                         ValidWord = true,
-                                                        Children = new List<Trie>()
+                                                        Children = new List<ITrie>()
                                                     }
                                                 }
                                             }
@@ -67,7 +67,7 @@ namespace BoggleSolutionTests
                             {
                                 Value = 'E',
                                 ValidWord = true,
-                                Children = new List<Trie>()
+                                Children = new List<ITrie>()
                             }
                         }
                     }
@@ -77,19 +77,19 @@ namespace BoggleSolutionTests
             {
                 Value = 'C',
                 ValidWord = false,
-                Children = new List<Trie>
+                Children = new List<ITrie>
                 {
                     new Trie
                     {
                         Value = 'A',
                         ValidWord = false,
-                        Children = new List<Trie>
+                        Children = new List<ITrie>
                         {
                             new Trie
                             {
                                 Value = 'T',
                                 ValidWord = true,
-                                Children = new List<Trie>()
+                                Children = new List<ITrie>()
                             }
                         }
                     }

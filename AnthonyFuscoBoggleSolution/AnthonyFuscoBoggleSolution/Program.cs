@@ -7,7 +7,7 @@ namespace AnthonyFuscoBoggleSolution
     {
         static void Main(string[] args)
         {
-            BoggleWordSearchService service = new BoggleWordSearchService(new TrieBuilder(new DictionaryRepository()));
+            IBoggleWordSearchService service = Factory.CreBoggleWordSearchService();
             
             Console.WriteLine("Please Enter Puzzle as String going from left to right, next line: ");
             string puzzle = Console.ReadLine();
