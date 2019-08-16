@@ -40,7 +40,7 @@ namespace AnthonyFuscoBoggleSolution
             return new TrieBuilder(CreateDictionaryRepository());
         }
 
-        public static IBoggleWordSearchService CreBoggleWordSearchService()
+        public static IBoggleWordSearchService CreateBoggleWordSearchService()
         {
             return new BoggleWordSearchService(CreateTrieBuilder());
         }
