@@ -1,5 +1,4 @@
 ﻿using System;
-using AnthonyFuscoBoggleSolutionNetCore.Data;
 
 namespace AnthonyFuscoBoggleSolutionNetCore
 {
