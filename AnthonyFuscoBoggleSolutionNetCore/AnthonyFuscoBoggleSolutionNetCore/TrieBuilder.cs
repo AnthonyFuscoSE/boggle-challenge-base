@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AnthonyFuscoBoggleSolutionNetCore.Data;
 using AnthonyFuscoBoggleSolutionNetCore.Models;
-using AnthonyFuscoBoggleSolutionNetCore.Models;
 
 namespace AnthonyFuscoBoggleSolutionNetCore
 {
