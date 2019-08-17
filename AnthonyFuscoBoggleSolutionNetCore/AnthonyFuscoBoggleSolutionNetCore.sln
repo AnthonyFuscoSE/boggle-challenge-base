@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnthonyFuscoBoggleSolutionNetCore", "AnthonyFuscoBoggleSolutionNetCore\AnthonyFuscoBoggleSolutionNetCore.csproj", "{262BCEA9-4047-42F8-9A44-05530FF112B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnthonyFuscoBoggleSolutionNetCoreTests", "AnthonyFuscoBoggleSolutionNetCoreTests\AnthonyFuscoBoggleSolutionNetCoreTests.csproj", "{D5EF187E-49C0-480C-9E82-77F11D34E212}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{262BCEA9-4047-42F8-9A44-05530FF112B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262BCEA9-4047-42F8-9A44-05530FF112B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262BCEA9-4047-42F8-9A44-05530FF112B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262BCEA9-4047-42F8-9A44-05530FF112B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5EF187E-49C0-480C-9E82-77F11D34E212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5EF187E-49C0-480C-9E82-77F11D34E212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5EF187E-49C0-480C-9E82-77F11D34E212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5EF187E-49C0-480C-9E82-77F11D34E212}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AE0225F-4CB1-40D7-9595-D7A7C5EA8FFD}
+	EndGlobalSection
+EndGlobal
