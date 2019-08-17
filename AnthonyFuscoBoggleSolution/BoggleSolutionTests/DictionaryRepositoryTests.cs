@@ -19,6 +19,7 @@ namespace BoggleSolutionTests
             //Assert
             Assert.IsFalse(words.Contains("AA"));
             Assert.IsFalse(words.Contains("A"));
+            Assert.IsTrue(words.Count > 0);
         }
     }
 }
